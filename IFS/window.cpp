@@ -1,17 +1,7 @@
 #include "window.h"
-#include <stdexcept>
 
 Window::Window(HINSTANCE hInstance, int nCmdShow) : hInstance(hInstance) {
-    Initialize();
-    ShowWindow(hWnd, nCmdShow);
-}
-
-Window::~Window() {
-    DestroyWindow(hWnd);
-}
-
-void Window::Initialize() {
-    const wchar_t CLASS_NAME[] = L"Sample Window Class";
+    const wchar_t CLASS_NAME[] = L"InfinitySpaceWindowClass";
 
     WNDCLASS wc = {};
     wc.lpfnWndProc = WindowProc;
@@ -20,54 +10,44 @@ void Window::Initialize() {
 
     RegisterClass(&wc);
 
-    // Saame ekraani suuruse
-    RECT screenRect;
-    screenRect.left = 0;
-    screenRect.top = 0;
-    screenRect.right = GetSystemMetrics(SM_CXSCREEN);
-    screenRect.bottom = GetSystemMetrics(SM_CYSCREEN);
-
-    // Loome akna, mis katab kogu ekraani
-    hWnd = CreateWindowEx(
+    hWnd = CreateWindowExW(
         0,
         CLASS_NAME,
-        L"DirectX 12 Window", // Muudetud L"DirectX 12 Window"
-        WS_POPUP, // Kasutame WS_POPUP, et eemaldada akna piirded
-        screenRect.left, screenRect.top,
-        screenRect.right - screenRect.left,
-        screenRect.bottom - screenRect.top,
-        nullptr,
-        nullptr,
-        hInstance,
-        nullptr
+        L"Infinity Space",  // Muudame ka akna pealkirja lahti kirjutatud string'iks
+        WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, CW_USEDEFAULT, 1360, 768,
+        NULL, NULL, hInstance, NULL
     );
 
-    if (hWnd == nullptr) {
-        throw std::runtime_error("Failed to create window");
-    }
-
-    // Täisekraanil akna jaoks
-    SetWindowLong(hWnd, GWL_STYLE, WS_POPUP);
-    SetWindowPos(hWnd, HWND_TOP, 0, 0, screenRect.right - screenRect.left, screenRect.bottom - screenRect.top, SWP_NOZORDER | SWP_FRAMECHANGED);
+    ShowWindow(hWnd, nCmdShow);
 }
 
-void Window::Run() {
-    MSG msg;
-    while (GetMessage(&msg, nullptr, 0, 0)) {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
-    }
+Window::~Window() {
+    DestroyWindow(hWnd);
+}
+
+void Window::Show() {
+    ShowWindow(hWnd, SW_SHOW);
 }
 
 HWND Window::GetHandle() const {
     return hWnd;
 }
 
-LRESULT CALLBACK Window::WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
-    switch (message) {
+LRESULT CALLBACK Window::WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+    switch (uMsg) {
     case WM_DESTROY:
         PostQuitMessage(0);
         return 0;
+    case WM_PAINT:
+    {
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hWnd, &ps);
+        // Taustavärv must
+        FillRect(hdc, &ps.rcPaint, (HBRUSH)(COLOR_BACKGROUND + 1)); // Must värv
+        EndPaint(hWnd, &ps);
     }
-    return DefWindowProc(hWnd, message, wParam, lParam);
+    return 0;
+    }
+    return DefWindowProc(hWnd, uMsg, wParam, lParam);
 }

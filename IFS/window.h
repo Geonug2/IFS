@@ -7,16 +7,13 @@ class Window {
 public:
     Window(HINSTANCE hInstance, int nCmdShow);
     ~Window();
-
-    void Run();
+    void Show();
     HWND GetHandle() const;
 
 private:
-    void Initialize();
-    static LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-
-    HINSTANCE hInstance;
     HWND hWnd;
+    HINSTANCE hInstance;
+    static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 };
 
 #endif // WINDOW_H
