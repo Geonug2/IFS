@@ -4,6 +4,12 @@
     <Filter Include="Window">
       <UniqueIdentifier>{48f0518c-d7e4-4c12-a150-ece053862abf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HLSL Shader">
+      <UniqueIdentifier>{b5587873-10d1-4a91-b2c7-81ccd69433a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PixelShader">
+      <UniqueIdentifier>{98f17626-bc81-4074-be01-552454ea84a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IFS.cpp">
@@ -12,10 +18,24 @@
     <ClCompile Include="window.cpp">
       <Filter>Window</Filter>
     </ClCompile>
+    <ClCompile Include="PixelShader.cpp">
+      <Filter>PixelShader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
       <Filter>Window</Filter>
     </ClInclude>
+    <ClInclude Include="PixelShader.h">
+      <Filter>PixelShader</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="RingVertexShader.hlsl">
+      <Filter>HLSL Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="RingPixelShader.hlsl">
+      <Filter>HLSL Shader</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

@@ -22,6 +22,47 @@ Window::Window(HINSTANCE hInstance, int nCmdShow) : hInstance(hInstance) {
     ShowWindow(hWnd, nCmdShow);
 }
 
+bool Window::InitializeDirectX() {
+    // Enable debug layer
+    #if defined(_DEBUG)
+    {
+        Microsoft::WRL::ComPtr<ID3D12Debug> debugController;
+        if (SUCCEEDED(D3D12GetDebugInterface(IID_PPV_ARGS(&debugController)))) {
+            debugController->EnableDebugLayer();
+        }
+    }
+    #endif
+
+    // Create DXGI factory
+    Microsoft::WRL::ComPtr<IDXGIFactory4> factory;
+    if (FAILED(CreateDXGIFactory1(IID_PPV_ARGS(&factory)))) {
+        return false;
+    }
+
+    // Create device
+    if (FAILED(D3D12CreateDevice(
+        nullptr, 
+        D3D_FEATURE_LEVEL_12_0, 
+        IID_PPV_ARGS(&m_device)
+    ))) {
+        return false;
+    }
+
+    // Create command queue
+    D3D12_COMMAND_QUEUE_DESC queueDesc = {};
+    queueDesc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
+    if (FAILED(m_device->CreateCommandQueue(&queueDesc, IID_PPV_ARGS(&m_commandQueue)))) {
+        return false;
+    }
+
+    // Initialize Pixel Shader
+    if (!m_pixelShader.Initialize(m_device)) {
+        return false;
+    }
+
+    return true;
+}
+
 Window::~Window() {
     DestroyWindow(hWnd);
 }
