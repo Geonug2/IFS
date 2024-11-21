@@ -187,10 +187,12 @@
   <ItemGroup>
     <ClCompile Include="IFS.cpp" />
     <ClCompile Include="PixelShader.cpp" />
+    <ClCompile Include="VertexShader.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PixelShader.h" />
+    <ClInclude Include="VertexShader.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>

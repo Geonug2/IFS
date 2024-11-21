@@ -1,4 +1,7 @@
 #include "window.h"
+#include "VertexShader.h"
+
+VertexShader m_vertexShader;
 
 Window::Window(HINSTANCE hInstance, int nCmdShow) : hInstance(hInstance) {
     const wchar_t CLASS_NAME[] = L"InfinitySpaceWindowClass";
@@ -57,6 +60,11 @@ bool Window::InitializeDirectX() {
 
     // Initialize Pixel Shader
     if (!m_pixelShader.Initialize(m_device)) {
+        return false;
+    }
+
+    // Initialize Vertex Shader
+    if (!m_vertexShader.Initialize(m_device)) {
         return false;
     }
 
