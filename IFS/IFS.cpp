@@ -1,11 +1,11 @@
-#include <windows.h>
+ï»¿#include <windows.h>
 #include "window.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow) {
     Window window(hInstance, nCmdShow);
     window.Show();
 
-    // Peamine tsükkel
+    // Peamine tsï¿½kkel
     MSG msg;
     while (GetMessage(&msg, NULL, 0, 0)) {
         TranslateMessage(&msg);

@@ -1,4 +1,4 @@
-#include "window.h"
+ï»¿#include "window.h"
 #include "GraphicsResource.h"
 
 Window::Window(HINSTANCE hInstance, int nCmdShow) : hInstance(hInstance), m_swapChain(nullptr, nullptr, 1360, 768) {
@@ -24,17 +24,7 @@ Window::Window(HINSTANCE hInstance, int nCmdShow) : hInstance(hInstance), m_swap
 }
 
 bool Window::InitializeDirectX() {
-    // Enable debug layer
-    #if defined(_DEBUG)
-    {
-        Microsoft::WRL::ComPtr<ID3D12Debug> debugController;
-        if (SUCCEEDED(D3D12GetDebugInterface(IID_PPV_ARGS(&debugController)))) {
-            debugController->EnableDebugLayer();
-        }
-    }
-    #endif
 
-    // Create DXGI factory
     Microsoft::WRL::ComPtr<IDXGIFactory4> factory;
     if (FAILED(CreateDXGIFactory1(IID_PPV_ARGS(&factory)))) {
         return false;
@@ -42,8 +32,8 @@ bool Window::InitializeDirectX() {
 
     // Create device
     if (FAILED(D3D12CreateDevice(
-        nullptr, 
-        D3D_FEATURE_LEVEL_12_0, 
+        nullptr,
+        D3D_FEATURE_LEVEL_12_0,
         IID_PPV_ARGS(&m_device)
     ))) {
         return false;
@@ -102,8 +92,8 @@ LRESULT CALLBACK Window::WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM 
     {
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
-        // Taustavärv must
-        FillRect(hdc, &ps.rcPaint, (HBRUSH)(COLOR_BACKGROUND + 1)); // Must värv
+        // Taustavï¿½rv must
+        FillRect(hdc, &ps.rcPaint, (HBRUSH)(COLOR_BACKGROUND + 1)); // Must vï¿½rv
         EndPaint(hWnd, &ps);
     }
     return 0;

@@ -1,24 +1,19 @@
-cbuffer ConstantBuffer : register(b0)
+struct VSInput
 {
-    float4x4 modelViewProjection;
+    float3 position : POSITION;
+    float4 color : COLOR;
 };
 
-struct VS_INPUT
+struct PSInput
 {
-    float4 Pos : POSITION;
-    float4 Color : COLOR;
+    float4 position : SV_POSITION;
+    float4 color : COLOR;
 };
 
-struct PS_INPUT
+PSInput main(VSInput input)
 {
-    float4 Pos : SV_POSITION;
-    float4 Color : COLOR;
-};
-
-PS_INPUT main(VS_INPUT input)
-{
-    PS_INPUT output;
-    output.Pos = mul(input.Pos, modelViewProjection);
-    output.Color = input.Color;
+    PSInput output;
+    output.position = float4(input.position, 1.0f);
+    output.color = input.color;
     return output;
 }

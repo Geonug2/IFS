@@ -1,5 +1,7 @@
 #include "PixelShader.h"
 #include <iostream>
+#include <d3dcompiler.h>
+#include <fstream>
 
 PixelShader::PixelShader() {
 }
@@ -8,24 +10,15 @@ PixelShader::~PixelShader() {
 }
 
 bool PixelShader::Initialize(Microsoft::WRL::ComPtr<ID3D12Device> device) {
-    // Basic pixel shader code
-    const char* shaderCode = R"(
-        struct PSInput {
-            float4 position : SV_POSITION;
-            float4 color : COLOR;
-        };
+    // Siin võiksime kasutada LoadShaderFromFile meetodit, et laadida shader failist
+    return LoadShaderFromFile(device, L"PixelShader.hlsl");
+}
 
-        float4 main(PSInput input) : SV_TARGET {
-            return float4(1.0f, 0.0f, 0.0f, 1.0f); // Red color
-        }
-    )";
-
+bool PixelShader::LoadShaderFromFile(Microsoft::WRL::ComPtr<ID3D12Device> device, const std::wstring& filename) {
     Microsoft::WRL::ComPtr<ID3DBlob> errorBlob;
 
-    HRESULT hr = D3DCompile(
-        shaderCode,
-        strlen(shaderCode),
-        nullptr,
+    HRESULT hr = D3DCompileFromFile(
+        filename.c_str(),
         nullptr,
         nullptr,
         "main",
@@ -42,8 +35,11 @@ bool PixelShader::Initialize(Microsoft::WRL::ComPtr<ID3D12Device> device) {
             OutputDebugStringA(errorMessage.c_str());
             std::cerr << "Pixel Shader Compilation Failed: " << errorMessage << std::endl;
         }
+        // Konverteeri wstring UTF-8 stringiks
+        std::wcerr << L"Shader loading failed for file: " << filename << std::endl;
         return false;
     }
 
+    std::wcout << L"Shader loaded successfully from file: " << filename << std::endl;
     return true;
 }
