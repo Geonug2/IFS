@@ -8,6 +8,7 @@
 #include "PixelShader.h"
 #include "VertexShader.h"
 #include "SwapChain.h"
+#include "GraphicsResource.h"
 
 class Window {
 public:
@@ -31,6 +32,8 @@ private:
 
     // Muuda see rida, et viidata SwapChain klassile
     SwapChain m_swapChain;
+
+    Microsoft::WRL::ComPtr<ID3D12Resource> m_graphicsResource; // Siin on m_graphicsResource
 
     static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 };

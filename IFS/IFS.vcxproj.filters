@@ -16,6 +16,9 @@
     <Filter Include="SwapChain">
       <UniqueIdentifier>{ac8dbb50-68ea-487c-af52-18bbabb52842}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GraphicsResource">
+      <UniqueIdentifier>{1a663a3d-4834-4b29-b292-4f6694d4c7ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IFS.cpp">
@@ -33,6 +36,9 @@
     <ClCompile Include="SwapChain.cpp">
       <Filter>SwapChain</Filter>
     </ClCompile>
+    <ClCompile Include="GraphicsResource.cpp">
+      <Filter>GraphicsResource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
@@ -46,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="SwapChain.h">
       <Filter>SwapChain</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsResource.h">
+      <Filter>GraphicsResource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
