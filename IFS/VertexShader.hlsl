@@ -1,18 +1,19 @@
+// VertexShader.hlsl
 struct VSInput
 {
     float3 position : POSITION;
     float4 color : COLOR;
 };
 
-struct PSInput
+struct VSOutput
 {
     float4 position : SV_POSITION;
     float4 color : COLOR;
 };
 
-PSInput main(VSInput input)
+VSOutput main(VSInput input)
 {
-    PSInput output;
+    VSOutput output;
     output.position = float4(input.position, 1.0f);
     output.color = input.color;
     return output;

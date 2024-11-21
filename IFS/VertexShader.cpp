@@ -2,6 +2,7 @@
 #include <iostream>
 #include <d3dcompiler.h>
 #include <fstream>
+#include <vector>
 
 VertexShader::VertexShader() {
 }
@@ -10,15 +11,23 @@ VertexShader::~VertexShader() {
 }
 
 bool VertexShader::Initialize(Microsoft::WRL::ComPtr<ID3D12Device> device) {
-    // Siin võiksime kasutada LoadShaderFromFile meetodit, et laadida shader failist
-    return LoadShaderFromFile(device, L"VertexShader.hlsl");
-}
+    // HLSL faili laadimine
+    std::ifstream shaderFile("VertexShader.hlsl");
+    if (!shaderFile.is_open()) {
+        std::cerr << "Failed to open VertexShader.hlsl" << std::endl;
+        return false;
+    }
 
-bool VertexShader::LoadShaderFromFile(Microsoft::WRL::ComPtr<ID3D12Device> device, const std::wstring& filename) {
+    std::string shaderCode((std::istreambuf_iterator<char>(shaderFile)),
+        std::istreambuf_iterator<char>());
+    shaderFile.close();
+
     Microsoft::WRL::ComPtr<ID3DBlob> errorBlob;
 
-    HRESULT hr = D3DCompileFromFile(
-        filename.c_str(),
+    HRESULT hr = D3DCompile(
+        shaderCode.c_str(),
+        shaderCode.size(),
+        nullptr,
         nullptr,
         nullptr,
         "main",
@@ -35,11 +44,8 @@ bool VertexShader::LoadShaderFromFile(Microsoft::WRL::ComPtr<ID3D12Device> devic
             OutputDebugStringA(errorMessage.c_str());
             std::cerr << "Vertex Shader Compilation Failed: " << errorMessage << std::endl;
         }
-        // Konverteeri wstring UTF-8 stringiks
-        std::wcerr << L"Shader loading failed for file: " << filename << std::endl;
         return false;
     }
 
-    std::wcout << L"Shader loaded successfully from file: " << filename << std::endl;
     return true;
 }

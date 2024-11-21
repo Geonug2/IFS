@@ -58,10 +58,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="RingVertexShader.hlsl">
+    <FxCompile Include="VertexShader.hlsl">
       <Filter>HLSL Shader</Filter>
     </FxCompile>
-    <FxCompile Include="RingPixelShader.hlsl">
+    <FxCompile Include="PixelShader.hlsl">
       <Filter>HLSL Shader</Filter>
     </FxCompile>
   </ItemGroup>

@@ -10,7 +10,6 @@ public:
     ~PixelShader();
 
     bool Initialize(Microsoft::WRL::ComPtr<ID3D12Device> device);
-    bool LoadShaderFromFile(Microsoft::WRL::ComPtr<ID3D12Device> device, const std::wstring& filename);
     Microsoft::WRL::ComPtr<ID3DBlob> GetShaderBlob() { return m_pixelShaderBlob; }
 
 private:
