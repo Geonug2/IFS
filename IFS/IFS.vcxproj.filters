@@ -13,6 +13,9 @@
     <Filter Include="VertexShader">
       <UniqueIdentifier>{bfad4d4a-7e68-4805-8a04-754d7f7b5e68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SwapChain">
+      <UniqueIdentifier>{ac8dbb50-68ea-487c-af52-18bbabb52842}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IFS.cpp">
@@ -27,6 +30,9 @@
     <ClCompile Include="VertexShader.cpp">
       <Filter>VertexShader</Filter>
     </ClCompile>
+    <ClCompile Include="SwapChain.cpp">
+      <Filter>SwapChain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
@@ -37,6 +43,9 @@
     </ClInclude>
     <ClInclude Include="VertexShader.h">
       <Filter>VertexShader</Filter>
+    </ClInclude>
+    <ClInclude Include="SwapChain.h">
+      <Filter>SwapChain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

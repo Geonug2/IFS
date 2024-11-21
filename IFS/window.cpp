@@ -1,9 +1,6 @@
 #include "window.h"
-#include "VertexShader.h"
 
-VertexShader m_vertexShader;
-
-Window::Window(HINSTANCE hInstance, int nCmdShow) : hInstance(hInstance) {
+Window::Window(HINSTANCE hInstance, int nCmdShow) : hInstance(hInstance), m_swapChain(nullptr, nullptr, 1360, 768) {
     const wchar_t CLASS_NAME[] = L"InfinitySpaceWindowClass";
 
     WNDCLASS wc = {};
@@ -16,7 +13,7 @@ Window::Window(HINSTANCE hInstance, int nCmdShow) : hInstance(hInstance) {
     hWnd = CreateWindowExW(
         0,
         CLASS_NAME,
-        L"Infinity Space",  // Muudame ka akna pealkirja lahti kirjutatud string'iks
+        L"Infinity Space",
         WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, CW_USEDEFAULT, 1360, 768,
         NULL, NULL, hInstance, NULL
@@ -65,6 +62,10 @@ bool Window::InitializeDirectX() {
 
     // Initialize Vertex Shader
     if (!m_vertexShader.Initialize(m_device)) {
+        return false;
+    }
+
+    if (!m_swapChain.Initialize()) {
         return false;
     }
 
