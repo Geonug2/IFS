@@ -72,6 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>IfsTexture</TargetName>
+    <LibraryPath>C:\Users\georg\vcpkg\installed\x64-windows\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\georg\vcpkg\installed\x64-windows\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>IfsTexture</TargetName>
@@ -170,10 +172,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="IfsTexture.rc" />
+    <Image Include="Texture\Space1366x768.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Texture\Space1366x768.jpg" />
+    <ResourceCompile Include="IfsTexture.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

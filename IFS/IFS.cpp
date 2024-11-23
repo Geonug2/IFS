@@ -67,6 +67,13 @@ GLuint loadTextureFromMemory(HGLOBAL hImageMemory, int& width, int& height) {
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
     // Laadi DLL
+
+    AllocConsole(); // Võimaldab konsooli väljundit
+    FILE* pCout;
+    freopen_s(&pCout, "CONOUT$", "w", stdout);
+
+    std::cout << "Program started..." << std::endl;
+
     HMODULE hDll = LoadLibrary(L"IfsTexture.dll");
     if (hDll == NULL) {
         std::cerr << "Failed to load DLL: " << GetLastError() << std::endl;
@@ -102,12 +109,21 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     }
 
     // Loo aken
+    // Enne akna loomist lisage täiendav veakontroll
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
     GLFWwindow* window = glfwCreateWindow(1366, 768, "Infinity Space", NULL, NULL);
     if (!window) {
-        std::cerr << "Failed to create GLFW window" << std::endl;
+        // Täpsema veateate saamiseks
+        const char* errorDescription;
+        int errorCode = glfwGetError(&errorDescription);
+        std::cerr << "Failed to create GLFW window. Error code: "
+            << errorCode << ", Description: "
+            << (errorDescription ? errorDescription : "Unknown error")
+            << std::endl;
         glfwTerminate();
-        freeImage(hImageMemory);
-        FreeLibrary(hDll);
         return -1;
     }
 

@@ -98,8 +98,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LibraryPath>C:\Users\georg\source\repos\IFS\x64\Release;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\georg\source\repos\IFS\IfsTexture;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\georg\source\repos\IFS\x64\Release;C:\Users\georg\vcpkg\installed\x64-windows\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\georg\vcpkg\installed\x64-windows\include;C:\Users\georg\source\repos\IFS\IfsTexture;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
