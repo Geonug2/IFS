@@ -1,8 +1,8 @@
 ﻿  IFS.cpp
-C:\Users\georg\source\repos\IFS\IFS\IFS.cpp(23,21): warning C4244: 'initializing': conversion from 'SIZE_T' to 'DWORD', possible loss of data
   Generating code
-  Previous IPDB and IOBJ mismatch, fall back to full compilation.
-  All 167 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  3 of 12 functions (25.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   IFS.vcxproj -> C:\Users\georg\source\repos\IFS\x64\Release\IFS.exe
   'pwsh.exe' is not recognized as an internal or external command,
