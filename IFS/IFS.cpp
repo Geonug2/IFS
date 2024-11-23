@@ -13,7 +13,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     // Loo aken
-    GLFWwindow* window = glfwCreateWindow(800, 600, "Infinity Space", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(1366, 768, "Infinity Space", nullptr, nullptr);
     if (!window) {
         std::cerr << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
