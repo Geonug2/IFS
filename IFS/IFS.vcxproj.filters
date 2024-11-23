@@ -4,65 +4,18 @@
     <Filter Include="Window">
       <UniqueIdentifier>{48f0518c-d7e4-4c12-a150-ece053862abf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="HLSL Shader">
-      <UniqueIdentifier>{b5587873-10d1-4a91-b2c7-81ccd69433a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="PixelShader">
-      <UniqueIdentifier>{98f17626-bc81-4074-be01-552454ea84a4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="VertexShader">
-      <UniqueIdentifier>{bfad4d4a-7e68-4805-8a04-754d7f7b5e68}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SwapChain">
-      <UniqueIdentifier>{ac8dbb50-68ea-487c-af52-18bbabb52842}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GraphicsResource">
-      <UniqueIdentifier>{1a663a3d-4834-4b29-b292-4f6694d4c7ff}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IFS.cpp">
       <Filter>Window</Filter>
     </ClCompile>
-    <ClCompile Include="window.cpp">
-      <Filter>Window</Filter>
-    </ClCompile>
-    <ClCompile Include="PixelShader.cpp">
-      <Filter>PixelShader</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexShader.cpp">
-      <Filter>VertexShader</Filter>
-    </ClCompile>
-    <ClCompile Include="SwapChain.cpp">
-      <Filter>SwapChain</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicsResource.cpp">
-      <Filter>GraphicsResource</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="window.h">
+    <ClInclude Include="Shader.h">
       <Filter>Window</Filter>
-    </ClInclude>
-    <ClInclude Include="PixelShader.h">
-      <Filter>PixelShader</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexShader.h">
-      <Filter>VertexShader</Filter>
-    </ClInclude>
-    <ClInclude Include="SwapChain.h">
-      <Filter>SwapChain</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicsResource.h">
-      <Filter>GraphicsResource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="VertexShader.hlsl">
-      <Filter>HLSL Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="PixelShader.hlsl">
-      <Filter>HLSL Shader</Filter>
-    </FxCompile>
+    <Image Include="container.jpg" />
   </ItemGroup>
 </Project>
