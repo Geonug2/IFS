@@ -1,3 +1,4 @@
-﻿  window.cpp
-MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
-C:\Users\georg\source\repos\IFS\x64\Debug\IFS.exe : fatal error LNK1120: 1 unresolved externals
+﻿  IFS.cpp
+  IFS.vcxproj -> C:\Users\georg\source\repos\IFS\x64\Debug\IFS.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.

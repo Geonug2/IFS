@@ -10,12 +10,4 @@
       <Filter>Window</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Shader.h">
-      <Filter>Window</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="container.jpg" />
-  </ItemGroup>
 </Project>
